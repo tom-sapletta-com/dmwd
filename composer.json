@@ -1,0 +1,29 @@
+{
+    "name": "tom/versandstatistik",
+    "description": "Das vorhandene Reporting soll um eine Statistik der Versandarten erweitert werden. Es ist zu ermitteln, wie viele Pakete an den einzelnen Tagen über welchen Dienstleister versandt wurden. Diese Daten sollen täglich in einer geeigneten Tabelle gespeichert werden.",
+    "type": "package",
+    "require-dev": {
+      "phpunit/phpunit": "5.0.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tomasz Sapletta",
+            "email": "tom@sapletta.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "versandstatistik\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "versandstatistik\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "catfan/Medoo": "dev-master"
+    }
+}

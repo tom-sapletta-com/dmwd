@@ -1,0 +1,18 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: mboretto/bitbucket-pipelines-php-mysql
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - composer
+        script:
+          - /usr/bin/mysqld --defaults-file=/etc/mysql/my.cnf --skip-grant-table &
+          - composer install
+          - while [ ! -e /run/mysqld/mysqld.sock ]; do echo "=> Waiting for confirmation of MySQL service startup.."; inotifywait -e create -q /run/mysqld/; done
+          - mysql -h localhost -u root -e "CREATE DATABASE versandstatistik;"
+          - php phpunit.phar test
