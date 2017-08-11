@@ -17,15 +17,10 @@
 /web/bundles/
 /.idea/
 .idea/
-app/
 bin/
 composer.lock
 doc/Testaufgabe.pdf
 index.html
 phpunit.xml.dist
 src/.htaccess
-src/AppBundle/
-tests/
 var/
-web/
-web/xml.xml

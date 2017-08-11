@@ -55,7 +55,54 @@ https://symfony.com/doc/current/serializer.html
 
 Current version is working direct from XML file,
 
-## TODO
+## Mysql Implementation
 
-Mysql Implementation
-AngularJS frontend
+Tables
++ video
+    + keywords
+    + categories
+    + blacklist   
+
+![diagramm](doc/dmwd.png)
+
+[sql](doc/dmwd.sql)
+
+[uml](doc/dmwd.uml)
+
+## Mysql and Symfony
+
+[doctrine](https://symfony.com/doc/current/doctrine.html)
+
+Edit File:
+app/config/parameters.yml
+
+    parameters:
+        database_host: 127.0.0.1
+        database_port: 3306
+        database_name: dmwd
+        database_user: root
+        database_password: root
+
+Console
+
+    sudo php bin/console doctrine:database:create
+    
+
+    #sudo php bin/console doctrine:generate:entity
+    
+### How to Generate Entities from an Existing Database    
+https://symfony.com/doc/current/doctrine/reverse_engineering.html
+
+Create All Tables as XML config
+    
+    sudo php bin/console doctrine:mapping:import --force AppBundle xml
+
+generate entity classes with annotation mappings
+
+    sudo php bin/console doctrine:mapping:convert annotation ./src
+    
+
+php bin/console doctrine:generate:entities AppBundle
+php bin/console doctrine:mapping:convert annotation ./src
+    
+## AngularJS frontend
