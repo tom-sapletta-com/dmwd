@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block video_menu_list %}{% endblock %}
+{% block video_import %}{% endblock %}
+
+{% block video_checkbox_list %}
+    <h2>Blacklist</h2>
+    <div id="video_checkbox_list" class="menu">
+        <ul>
+            {% for menu in video_checkbox_list %}
+                <li>
+                    <span>id: {{ menu.id }}</span>
+                    <span>xml_id: {{ menu.xml_id }}</span>
+                    <span>blacklist: {{ menu.status }}</span>
+                    <span>set <a href="/db/blacklist/id/{{ menu.id }}/status/{{ menu.inverted_status }}">{{ menu.inverted_status }}</a></span>
+                </li>
+            {% endfor %}
+        </ul>
+        </form>
+    </div>
+{% endblock %}

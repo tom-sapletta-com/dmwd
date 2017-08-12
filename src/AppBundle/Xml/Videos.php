@@ -6,9 +6,12 @@
  * Time: 20:22
  */
 
-namespace AppBundle;
+namespace AppBundle\Xml;
 
-
+/**
+ * Class Videos
+ * @package AppBundle\Xml
+ */
 class Videos
 {
     public $videos = [];
@@ -26,8 +29,11 @@ class Videos
      */
     public function setVideo(array $videos)
     {
+        /** @var array $video */
         foreach ($videos as $video) {
-            $this->videos[] = new Video($video);
+            if (is_array($video)) {
+                $this->videos[$video['id']] = new \AppBundle\Xml\Video($video);
+            }
         }
     }
 }

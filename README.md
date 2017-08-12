@@ -18,6 +18,7 @@ A Symfony project created on August 10, 2017, 5:28 pm.
     
 [public server](https://symfony.com/doc/current/setup/built_in_web_server.html)
     
+    sudo php bin/console server:run 0.0.0.0:81
     sudo php bin/console server:start 0.0.0.0:81
     sudo php bin/console server:status 192.168.188.34:81
     sudo php bin/console server:stop
@@ -50,24 +51,38 @@ https://symfony.com/doc/current/serializer.html
 
 ## Project Pages
 [home](http://192.168.188.34:81/)
-[list](http://192.168.188.34:81/list)
-[video](http://192.168.188.34:81/video)
+
+#### XML
+[list ALL from XML](http://192.168.188.34:81/xml/all)
+
+[list by Data from XML](http://192.168.188.34:81/xml/list)
+
+[video from XML](http://192.168.188.34:81/xml/video)
+
+[import xml to db](http://192.168.188.34:81/xml/import/1)
+
+### DB
+[list from DB](http://192.168.188.34:81/db/list)
+[video from DB](http://192.168.188.34:81/db/video)
+
 
 Current version is working direct from XML file,
 
 ## Mysql Implementation
 
 Tables
-+ video
-    + keywords
-    + categories
-    + blacklist   
+    + video
+        + keywords
+        + categories           
 
 ![diagramm](doc/dmwd.png)
-
-[sql](doc/dmwd.sql)
-
 [uml](doc/dmwd.uml)
+
+#### Mysql Table structure
+[sql Tables](doc/dmwd.sql)
+
+#### Mysql Data
+[sql dmwd_video](doc/dmwd_videos.sql)
 
 ## Mysql and Symfony
 
@@ -104,5 +119,10 @@ generate entity classes with annotation mappings
 
 php bin/console doctrine:generate:entities AppBundle
 php bin/console doctrine:mapping:convert annotation ./src
-    
-## AngularJS frontend
+
+## Blacklist
+ 
+    http://192.168.188.34:81/db/blacklist/0
+
+## Update Data
+

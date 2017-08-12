@@ -5,13 +5,20 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Video
+ * Videos
  *
- * @ORM\Table(name="video")
+ * @ORM\Table(name="videos")
  * @ORM\Entity
  */
-class Video
+class Videos
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="xml_id", type="bigint", nullable=false)
+     */
+    private $xmlId = '0';
+
     /**
      * @var \DateTime
      *
@@ -90,11 +97,18 @@ class Video
     private $video720p;
 
     /**
-     * @var \DateTime
+     * @var array
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @ORM\Column(name="keywords", type="array", length=65535, nullable=true)
      */
-    private $createdAt;
+    private $keywords;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="categories", type="array", length=65535, nullable=true)
+     */
+    private $categories;
 
     /**
      * @var boolean
@@ -102,6 +116,13 @@ class Video
      * @ORM\Column(name="blacklist", type="boolean", nullable=true)
      */
     private $blacklist = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
 
     /**
      * @var integer
@@ -113,6 +134,24 @@ class Video
     private $id;
 
     /**
+     * @return int
+     */
+    public function getXmlId()
+    {
+        return $this->xmlId;
+    }
+
+    /**
+     * @param int $xmlId
+     * @return Videos
+     */
+    public function setXmlId($xmlId)
+    {
+        $this->xmlId = $xmlId;
+        return $this;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getReleased()
@@ -122,7 +161,7 @@ class Video
 
     /**
      * @param \DateTime $released
-     * @return Video
+     * @return Videos
      */
     public function setReleased($released)
     {
@@ -140,7 +179,7 @@ class Video
 
     /**
      * @param string $duration
-     * @return Video
+     * @return Videos
      */
     public function setDuration($duration)
     {
@@ -158,7 +197,7 @@ class Video
 
     /**
      * @param string $title
-     * @return Video
+     * @return Videos
      */
     public function setTitle($title)
     {
@@ -176,7 +215,7 @@ class Video
 
     /**
      * @param string $description
-     * @return Video
+     * @return Videos
      */
     public function setDescription($description)
     {
@@ -194,7 +233,7 @@ class Video
 
     /**
      * @param string $date
-     * @return Video
+     * @return Videos
      */
     public function setDate($date)
     {
@@ -212,7 +251,7 @@ class Video
 
     /**
      * @param string $author
-     * @return Video
+     * @return Videos
      */
     public function setAuthor($author)
     {
@@ -230,7 +269,7 @@ class Video
 
     /**
      * @param string $picture
-     * @return Video
+     * @return Videos
      */
     public function setPicture($picture)
     {
@@ -248,7 +287,7 @@ class Video
 
     /**
      * @param string $video240p
-     * @return Video
+     * @return Videos
      */
     public function setVideo240p($video240p)
     {
@@ -266,7 +305,7 @@ class Video
 
     /**
      * @param string $video360p
-     * @return Video
+     * @return Videos
      */
     public function setVideo360p($video360p)
     {
@@ -284,7 +323,7 @@ class Video
 
     /**
      * @param string $video480p
-     * @return Video
+     * @return Videos
      */
     public function setVideo480p($video480p)
     {
@@ -302,7 +341,7 @@ class Video
 
     /**
      * @param string $video720p
-     * @return Video
+     * @return Videos
      */
     public function setVideo720p($video720p)
     {
@@ -311,20 +350,38 @@ class Video
     }
 
     /**
-     * @return \DateTime
+     * @return array
      */
-    public function getCreatedAt()
+    public function getKeywords()
     {
-        return $this->createdAt;
+        return $this->keywords;
     }
 
     /**
-     * @param \DateTime $createdAt
-     * @return Video
+     * @param array $keywords
+     * @return Videos
      */
-    public function setCreatedAt($createdAt)
+    public function setKeywords($keywords)
     {
-        $this->createdAt = $createdAt;
+        $this->keywords = $keywords;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param array $categories
+     * @return Videos
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
         return $this;
     }
 
@@ -338,11 +395,29 @@ class Video
 
     /**
      * @param bool $blacklist
-     * @return Video
+     * @return Videos
      */
     public function setBlacklist($blacklist)
     {
         $this->blacklist = $blacklist;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return Videos
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 
@@ -356,14 +431,13 @@ class Video
 
     /**
      * @param int $id
-     * @return Video
+     * @return Videos
      */
     public function setId($id)
     {
         $this->id = $id;
         return $this;
     }
-
 
 }
 

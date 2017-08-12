@@ -6,52 +6,54 @@
  * Time: 20:22
  */
 
-namespace AppBundle;
+namespace AppBundle\Xml;
 
-//        <id>3007</id>
-//        <released>2017-04-03 11:04:55</released>
-//        <duration>00:00:31</duration>
-//        <title>Ed Sheeran: Wird es seine letzte Tour?</title>
-//        <description>Der britische Megastar möchte, sobald er Kinder hat, nicht mehr auf Tour gehen und stattdessen mit
-//            seiner Familie auf dem Dorf leben. Wird dies schon seine letzte Tour?
-//        </description>
-//        <date>2017-03-29</date>
-//        <author>Bang Showbiz</author>
-//        <picture>http://vod.gcdn.eu/3007/_picture.jpg</picture>
-//        <video_240p>http://vod.gcdn.eu/3007/v240.mp4</video_240p>
-//        <video_360p>http://vod.gcdn.eu/3007/v360.mp4</video_360p>
-//        <video_480p>http://vod.gcdn.eu/3007/v480.mp4</video_480p>
-//        <video_720p>http://vod.gcdn.eu/3007/v720.mp4</video_720p>
-//        <keywords>
-//            <keyword>Ed Sheeran</keyword>
-//            <keyword>Richard Arnold</keyword>
-//            <keyword>Cherry Seaborn</keyword>
-//        </keywords>
-//        <categories>
-//            <category>DE-News</category>
-//            <category>Lifestyle</category>
-//        </categories>
-
+/**
+ * Class Video
+ * @package AppBundle\Xml
+ */
 class Video
 {
+    /** @var integer */
     private $id;
 
-    /** @var \DateTime */
+    /** @var string */
     private $released;
 
+    /** @var string */
     private $duration;
+
+    /** @var string */
     private $title;
+
+    /** @var string */
     private $description;
 
+    /** @var string */
     private $date;
+
+    /** @var string */
     private $author;
+
+    /** @var string */
     private $picture;
+
+    /** @var string */
     private $video_240p;
+
+    /** @var string */
     private $video_360p;
+
+    /** @var string */
     private $video_480p;
+
+    /** @var string */
     private $video_720p;
 
+    /** @var array */
     private $keywords = [];
+
+    /** @var array */
     private $categories = [];
 
     /**
@@ -70,31 +72,31 @@ class Video
     public function fromArray(array $child)
     {
 
-        $this->id = $child['id'];
-        $this->released = $child['released'];
+        $this->setId($child['id']);
+        $this->setReleased($child['released']);
 
-        $this->duration = null;
+        $this->setDuration('00:00:00');
         if (!empty($child['duration'])) {
-            $this->setDurationFromString($child['duration']);
+            $this->setDuration($child['duration']);
         }
 
-        $this->title = $child['title'];
-        $this->description = $child['description'];
+        $this->setTitle($child['title']);
+        $this->setDescription($child['description']);
 
         $this->setDate($child['date']);
 
-        $this->author = $child['author'];
-        $this->picture = $child['picture'];
-        $this->video_240p = $child['video_240p'];
-        $this->video_360p = $child['video_360p'];
-        $this->video_480p = $child['video_480p'];
-        $this->video_720p = $child['video_720p'];
+        $this->setAuthor($child['author']);
+        $this->setPicture($child['picture']);
+        $this->setVideo240p($child['video_240p']);
+        $this->setVideo360p($child['video_360p']);
+        $this->setVideo480p($child['video_480p']);
+        $this->setVideo720p($child['video_720p']);
         $this->setKeywords($child['keywords']);
         $this->setCategories($child['categories']);
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -102,15 +104,17 @@ class Video
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
+     * @return Video
      */
     public function setId($id)
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getReleased()
     {
@@ -118,15 +122,17 @@ class Video
     }
 
     /**
-     * @param mixed $released
+     * @param string $released
+     * @return Video
      */
     public function setReleased($released)
     {
         $this->released = $released;
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getDuration()
     {
@@ -134,23 +140,17 @@ class Video
     }
 
     /**
-     * @param \DateTime $duration
+     * @param string $duration
+     * @return Video
      */
-    public function setDuration(\DateTime $duration)
+    public function setDuration($duration)
     {
         $this->duration = $duration;
+        return $this;
     }
 
     /**
-     * @param string $date
-     */
-    public function setDurationFromString($date)
-    {
-        $this->setDuration(new \DateTime($date));
-    }
-
-    /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -158,15 +158,17 @@ class Video
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
+     * @return Video
      */
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDescription()
     {
@@ -174,15 +176,17 @@ class Video
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
+     * @return Video
      */
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
     }
 
     /**
-     * @return
+     * @return string
      */
     public function getDate()
     {
@@ -190,15 +194,17 @@ class Video
     }
 
     /**
-     * @param $date
+     * @param string $date
+     * @return Video
      */
     public function setDate($date)
     {
         $this->date = $date;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAuthor()
     {
@@ -206,15 +212,17 @@ class Video
     }
 
     /**
-     * @param mixed $author
+     * @param string $author
+     * @return Video
      */
     public function setAuthor($author)
     {
         $this->author = $author;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPicture()
     {
@@ -222,15 +230,17 @@ class Video
     }
 
     /**
-     * @param mixed $picture
+     * @param string $picture
+     * @return Video
      */
     public function setPicture($picture)
     {
         $this->picture = $picture;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVideo240p()
     {
@@ -238,15 +248,17 @@ class Video
     }
 
     /**
-     * @param mixed $video_240p
+     * @param string $video_240p
+     * @return Video
      */
     public function setVideo240p($video_240p)
     {
         $this->video_240p = $video_240p;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVideo360p()
     {
@@ -254,15 +266,17 @@ class Video
     }
 
     /**
-     * @param mixed $video_360p
+     * @param string $video_360p
+     * @return Video
      */
     public function setVideo360p($video_360p)
     {
         $this->video_360p = $video_360p;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVideo480p()
     {
@@ -270,15 +284,17 @@ class Video
     }
 
     /**
-     * @param mixed $video_480p
+     * @param string $video_480p
+     * @return Video
      */
     public function setVideo480p($video_480p)
     {
         $this->video_480p = $video_480p;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getVideo720p()
     {
@@ -286,11 +302,13 @@ class Video
     }
 
     /**
-     * @param mixed $video_720p
+     * @param string $video_720p
+     * @return Video
      */
     public function setVideo720p($video_720p)
     {
         $this->video_720p = $video_720p;
+        return $this;
     }
 
     /**
@@ -303,10 +321,12 @@ class Video
 
     /**
      * @param array $keywords
+     * @return Video
      */
     public function setKeywords($keywords)
     {
         $this->keywords = $keywords;
+        return $this;
     }
 
     /**
@@ -319,11 +339,12 @@ class Video
 
     /**
      * @param array $categories
+     * @return Video
      */
     public function setCategories($categories)
     {
         $this->categories = $categories;
+        return $this;
     }
-
 
 }

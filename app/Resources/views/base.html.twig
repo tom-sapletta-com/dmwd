@@ -1,13 +1,283 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <style>
+            body {
+                background: #F5F5F5;
+                font: 18px/1.5 sans-serif;
+            }
+            table {
+                font: 12px sans-serif;
+            }
+            h1, h2 {
+                line-height: 1.2;
+                margin: 0 0 .5em;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 21px;
+                margin-bottom: 1em;
+            }
+
+            p {
+                margin: 0 0 1em 0;
+            }
+
+            a {
+                color: #0000F0;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+            code {
+                background: #F5F5F5;
+                max-width: 100px;
+                padding: 2px 6px;
+                word-wrap: break-word;
+            }
+
+            #wrapper {
+                background: #FFF;
+                margin: 1em auto;
+                max-width: 1100px;
+                width: 95%;
+            }
+
+            #container {
+                padding: 2em;
+            }
+
+            #welcome, #status {
+                margin-bottom: 2em;
+            }
+
+            #welcome h1 span {
+                display: block;
+                font-size: 75%;
+            }
+
+            #icon-status, #icon-book {
+                float: left;
+                height: 64px;
+                margin-right: 1em;
+                margin-top: -4px;
+                width: 64px;
+            }
+
+            #icon-book {
+                display: none;
+            }
+
+            @media (min-width: 768px) {
+                #wrapper {
+                    width: 80%;
+                    margin: 2em auto;
+                }
+
+                #icon-book {
+                    display: inline-block;
+                }
+
+                #status a, #next a {
+                    display: block;
+                }
+
+                @-webkit-keyframes fade-in {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+                @keyframes fade-in {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+                .sf-toolbar {
+                    opacity: 0;
+                    -webkit-animation: fade-in 1s .2s forwards;
+                    animation: fade-in 1s .2s forwards;
+                }
+            }
+        </style>
+
+        <style>
+            img.thumbnail {
+                width: auto;
+                height: 120px;
+            }
+            img.thumbnail_small {
+                width: auto;
+                height: 32px;
+            }
+            thead .description {
+                width: 450px;
+            }
+            thead .title {
+                width: 220px;
+            }
+            thead .date {
+                width: 70px;
+            }
+            thead .author {
+                width: 70px;
+            }
+            .message {
+                color: red;
+            }
+        </style>
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="container">
+
+        <h1>Video List</h1>
+
+        {% block message %}
+            <p class="message">{{ message }}</p>
+        {% endblock %}
+
+
+        {% block menu_list %}
+            <h2>Main Menu Video</h2>
+            <div id="menu_list" class="menu">
+                <ul>
+                    {% for menu in menu_list %}
+                        <li>
+                            <a href="{{ menu.url }}">{{ menu.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endblock %}
+
+        <hr/>
+
+        {% block video_menu_list %}
+            <h2>Video list</h2>
+            <div id="video_menu_list" class="menu">
+                <ul>
+                    {% for menu in video_menu_list %}
+                        <li>
+                            <a href="{{ menu.url }}">{{ menu.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endblock %}
+
+        {% block video_list %}
+            <h2>Videos</h2>
+            <div id="video_list">
+                <ul>
+                    {% for video in video_list %}
+                        <li>
+                            <h3>{{ video.getTitle }}</h3>
+
+                            <h4>Information</h4>
+                            <p>
+                                <img src="{{ video.getPicture }}" class="thumbnail"/>
+                            </p>
+                            <p>Date: {{ video.getDate }}</p>
+                            <p>Description: {{ video.getDescription }}</p>
+
+                            <h4>Video Format</h4>
+                            <ul>
+                                <li>
+                                    <a href="{{ video.getVideo240p }}">video_240p</a>
+                                </li>
+                                <li>
+                                    <a href="{{ video.getVideo360p }}">video_360p</a>
+                                </li>
+                                <li>
+                                    <a href="{{ video.getVideo480p }}">video_480p</a>
+                                </li>
+                                <li>
+                                    <a href="{{ video.getVideo720p }}">video_720p</a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endblock %}
+
+
+        {% block video_import %}
+            <h2>Video List Imported</h2>
+            <div id="video_import">
+                <table>
+                    <thead>
+                    <tr>
+                        <td>
+                            Id
+                        </td>
+                        <td class="title">
+                            Title
+                        </td>
+                        <td>
+                            Thumbnail
+                        </td>
+                        <td class="date">
+                            Date
+                        </td>
+                        <td class="description">
+                            Description
+                        </td>
+                        <td class="author">
+                            Author
+                        </td>
+                        <td>
+                            Duration
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for video in video_import %}
+                        <tr>
+                            <td>{{ video.getId }}</td>
+                            <td class="title">{{ video.getTitle }}</td>
+                            <td>
+                                <img src="{{ video.getPicture }}" class="thumbnail_small"/>
+                            </td>
+                            <td class="date">{{ video.getDate }}</td>
+                            <td class="description">{{ video.getDescription }}</td>
+                            <td class="author">{{ video.getAuthor }}</td>
+                            <td>{{ video.getDuration }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endblock %}
+
+
         {% block body %}{% endblock %}
+
+
         {% block javascripts %}{% endblock %}
-    </body>
+
+        {% block video_checkbox_list %}{% endblock %}
+
+    </div>
+</div>
+</body>
 </html>
