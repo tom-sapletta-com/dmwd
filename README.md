@@ -50,9 +50,11 @@ https://symfony.com/doc/current/serializer.html
 + creating the View
 
 ## Project Pages
+
 [home](http://192.168.188.34:81/)
 
 #### XML
+
 [list ALL from XML](http://192.168.188.34:81/xml/all)
 
 [list by Data from XML](http://192.168.188.34:81/xml/list)
@@ -62,6 +64,7 @@ https://symfony.com/doc/current/serializer.html
 [import xml to db](http://192.168.188.34:81/xml/import/1)
 
 ### DB
+
 [list from DB](http://192.168.188.34:81/db/list)
 [video from DB](http://192.168.188.34:81/db/video)
 
@@ -76,12 +79,15 @@ Tables
         + categories           
 
 ![diagramm](doc/dmwd.png)
+
 [uml](doc/dmwd.uml)
 
 #### Mysql Table structure
+
 [sql Tables](doc/dmwd.sql)
 
 #### Mysql Data
+
 [sql dmwd_video](doc/dmwd_videos.sql)
 
 ## Mysql and Symfony
