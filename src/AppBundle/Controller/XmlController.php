@@ -65,7 +65,7 @@ class XmlController extends DefaultController
         return $this->render('xml/video.html.twig', [
             'video_list' => $video_list,
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'message' => $message,
         ]);
     }
@@ -89,7 +89,7 @@ class XmlController extends DefaultController
         }
 
         return $this->render('xml/list.html.twig', [
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_menu_list' => $video_menu_list,
             'video_list' => [],
             'message' => $message,
@@ -112,7 +112,7 @@ class XmlController extends DefaultController
         return $this->render('xml/video.html.twig', [
             'video_list' => $video_list,
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'message' => $message,
         ]);
     }
@@ -140,7 +140,7 @@ class XmlController extends DefaultController
             'video_import' => $video_import,
             'video_list' => [],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'message' => $message,
         ]);
     }

@@ -1,3 +1,8 @@
+## How to install
+To install fom CLONE Repository on git are enough just steps:
+
+    php composer.phar install
+
 ## Task
 
 A Symfony project created on August 10, 2017, 5:28 pm.
@@ -8,8 +13,12 @@ A Symfony project created on August 10, 2017, 5:28 pm.
 
 ![screen](doc/chrome_2017-08-12_17-30-45.png)
 
+
 ## Project Steps
 
+below are details, about steps to create whole project.
+
+ 
 ### Creating environment
 [bitbucket repository](https://bitbucket.org/sapletta/dmwd/)
 
@@ -76,9 +85,8 @@ Current version is working direct from XML file,
 ## Mysql Implementation
 
 Tables
-    + video
-        + keywords
-        + categories           
++ video
+             
 
 ![diagramm](doc/dmwd.png)
 

@@ -33,10 +33,6 @@ class DefaultController extends Controller
             'title' => 'Home',
         ],
         [
-            'url' => 'http://mgr.gcdn.eu/xml?key=jSlnt4zudGG28wbglUyK8MqLZ6TXD-sYD3d0fUN7zMCwaWmABIL&mindate=2017-04-01',
-            'title' => 'XML FILE',
-        ],
-        [
             'url' => '/xml/all',
             'title' => 'XML: Show All',
         ],
@@ -85,6 +81,19 @@ class DefaultController extends Controller
     protected function getUrl($id = 1)
     {
         return $this->url_array[$id];
+    }
+
+    /**
+     * @param array $menu_array
+     * @param Request $request
+     * @return array
+     */
+    protected function getMenu(array $menu_array, Request $request)
+    {
+        foreach ($menu_array as $key => $menu){
+            $menu_array[$key]['url'] = $request->getBaseUrl() . $menu_array[$key]['url'];
+        }
+        return $menu_array;
     }
 
     /**
@@ -162,7 +171,7 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
             'video_list' => [],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'message' => ''
         ]);
     }

@@ -198,7 +198,7 @@ class DbController extends DefaultController
         return $this->render('db/list.html.twig', [
             'video_menu_list' => $video_menu_list,
             'video_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'message' => $message
         ]);
@@ -222,7 +222,7 @@ class DbController extends DefaultController
         return $this->render('db/list.html.twig', [
             'video_menu_list' => $video_menu_list,
             'video_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'message' => $message
         ]);
@@ -248,7 +248,7 @@ class DbController extends DefaultController
         return $this->render('db/video.html.twig', [
             'video_list' => [$video],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'message' => $message
         ]);
@@ -274,7 +274,7 @@ class DbController extends DefaultController
         return $this->render('db/video.html.twig', [
             'video_list' => $video,
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'message' => $message
         ]);
@@ -295,7 +295,7 @@ class DbController extends DefaultController
         return $this->render('db/video.html.twig', [
             'video_list' => $video_list,
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'message' => $message
         ]);
@@ -318,7 +318,7 @@ class DbController extends DefaultController
         return $this->render('db/blacklist.html.twig', [
             'video_list' => [],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'video_checkbox_list' => $video_checkbox_list,
             'message' => $message
@@ -341,7 +341,7 @@ class DbController extends DefaultController
         return $this->render('db/blacklist.html.twig', [
             'video_list' => [],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'video_import' => [],
             'video_checkbox_list' => $video_checkbox_list,
             'message' => $message
@@ -428,7 +428,7 @@ class DbController extends DefaultController
             'video_import' => $video_xml_not_in_blacklist,
             'video_list' => [],
             'video_menu_list' => [],
-            'menu_list' => $this->menu_array,
+            'menu_list' => $this->getMenu($this->menu_array, $request),
             'message' => $message
         ]);
     }
