@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>DATABASE</ID>
-  <OriginalElement>ea15b572-3791-4eaf-b087-ad07dc382eea.SCHEMA:dmwd</OriginalElement>
+  <OriginalElement>ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.videos</OriginalElement>
   <nodes>
-    <node x="81.5" y="0.0">ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.video</node>
-    <node x="184.0" y="366.0">ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.categories</node>
-    <node x="0.0" y="366.0">ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.keywords</node>
+    <node x="0.0" y="0.0">ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.videos</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.keywords" target="ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.video">
-      <point x="0.0" y="-59.0" />
-      <point x="82.0" y="341.0" />
-      <point x="127.75" y="341.0" />
-      <point x="-46.25" y="158.0" />
-    </edge>
-    <edge source="ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.categories" target="ea15b572-3791-4eaf-b087-ad07dc382eea.TABLE:dmwd.video">
-      <point x="0.0" y="-59.0" />
-      <point x="266.0" y="341.0" />
-      <point x="220.25" y="341.0" />
-      <point x="46.25" y="158.0" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="174.0" y="242.0" />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="92.5" y="202.0" />
   <SelectedNodes />
   <Categories>
     <Category>Key columns</Category>
